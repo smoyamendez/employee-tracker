@@ -33,9 +33,10 @@ CREATE TABLE employee (
     -- CREATE ROLE_ID COLUMN --
     role_id INT NOT NULL,
     -- CREATE MANAGER_ID COLUMN --
-    manager_id INT NOT NULL,
+    manager_id INT ,
     -- MAKES ROLE_ID FOREIGN KEY --
     FOREIGN KEY (role_id) REFERENCES role(id),
     -- MAKES MANAGER_ID FOREIGN KEY --
     FOREIGN KEY (manager_id) REFERENCES role(id)
 )
+ 
