@@ -1,51 +1,5 @@
--- CREATING DEPARTMENT TABLE --
-CREATE TABLE department (
-    -- CREATE ID COLUMN --
-    id INT NOT NULL AUTO_INCREMENT,
-    -- MAKES NAME COLUMN --
-    name VARCHAR(30) NOT NULL,
-    -- MAKES ID PRIMARY KEY --
-    PRIMARY KEY (id)
-);
-
--- CREATING ROLE TABLE --
-CREATE TABLE role (
-     -- CREATE ID COLUMN --
-    id INT NOT NULL AUTO_INCREMENT,
-    -- CREATE TITLE COLUMN --
-    title VARCHAR(30) NOT NULL,
-    -- CREATE SALARY COLUMN --
-    salary DECIMAL (65,2) NOT NULL,
-    -- CREATE DEPARTMENT ID --
-    department_id INT NOT NULL,
-    -- MAKES ID PRIMARY KEY --
-    PRIMARY KEY (id),
-    -- MAKES DEPARTMENT_ID FOREIGN KEY --
-    FOREIGN KEY (department_id) REFERENCES department(id)
-);
-
--- CREATING EMPLOYEE TABLE --
-CREATE TABLE employee (
-    -- CREATE ID COLUMN --
-    id INT NOT NULL AUTO_INCREMENT,
-    -- CREATE FIRST_NAME COLUMN --
-    first_name VARCHAR(30) NOT NULL,
-    -- CREATE LAST_NAME COLUMN --
-    last_name VARCHAR(30) NOT NULL,
-    -- CREATE ROLE_ID COLUMN --
-    role_id INT NOT NULL,
-    -- CREATE MANAGER_ID COLUMN --
-    manager_id INT,
-     -- MAKES ID PRIMARY KEY --
-    PRIMARY KEY (id),
-    -- MAKES ROLE_ID FOREIGN KEY --
-    FOREIGN KEY (role_id) REFERENCES role(id),
-    -- MAKES MANAGER_ID FOREIGN KEY --
-    -- FIXME: may need to be role(id) --
-    FOREIGN KEY (manager_id) REFERENCES employee(id) 
-);
+USE employee_trackerDB;
  
-
 -- DEPARTMENT SEEDS --
 INSERT INTO department (name)
 VALUES ("Management"), ("Sales"), ("Accounting"), ("Human Resources"), ("Reception"), ("Customer Relations"), ("Temp Employee");
@@ -60,6 +14,35 @@ VALUES ('Regional Manager', 60000.00, 1), ('Assistant (to the) Regional Manager'
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("Michael", "Scott", 1, 1);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id)
 VALUES ("Dwight", "Schrute", 2);
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Jim", "Halpert", 3), ("Stanley", "Hudson", 3), ("Phyllis", "Lapin", 3);
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Angela", "Martin", 4), ("Oscar", "Gutierrez", 4);
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Kevin", "Malone", 5);
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Pam", "Beasley", 6), ("Erin", "Hannon", 6);
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Creed", "Bratton", 7);
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Meredith", "Palmer", 8);
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Toby", "Flenderson", 9);
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Kelly", "Kapoor", 10);
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Ryan", "Howard", 11);
+
+
 

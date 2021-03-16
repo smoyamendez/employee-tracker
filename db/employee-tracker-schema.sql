@@ -1,0 +1,55 @@
+-- DROPS THE DATABASE IF IT ALREADY EXISTS --
+DROP DATABASE IF EXISTS employee_trackerDB;
+
+-- CREATES DATABASE --
+CREATE DATABASE employee_trackerDB;
+
+-- USES DATABASE FOR FOLLOWING STATEMENTS --
+USE employee_trackerDB;
+
+-- CREATING DEPARTMENT TABLE --
+CREATE TABLE department (
+    -- CREATE ID COLUMN --
+    id INT NOT NULL AUTO_INCREMENT,
+    -- MAKES NAME COLUMN --
+    name VARCHAR(30) NOT NULL,
+    -- MAKES ID PRIMARY KEY --
+    PRIMARY KEY (id)
+);
+
+-- CREATING ROLE TABLE --
+CREATE TABLE role (
+     -- CREATE ID COLUMN --
+    id INT NOT NULL AUTO_INCREMENT,
+    -- CREATE TITLE COLUMN --
+    title VARCHAR(30) NOT NULL,
+    -- CREATE SALARY COLUMN --
+    salary DECIMAL (65,2) NOT NULL,
+    -- CREATE DEPARTMENT ID --
+    department_id INT NOT NULL,
+    -- MAKES ID PRIMARY KEY --
+    PRIMARY KEY (id),
+    -- MAKES DEPARTMENT_ID FOREIGN KEY --
+    FOREIGN KEY (department_id) REFERENCES department(id)
+);
+
+-- CREATING EMPLOYEE TABLE --
+CREATE TABLE employee (
+    -- CREATE ID COLUMN --
+    id INT NOT NULL AUTO_INCREMENT,
+    -- CREATE FIRST_NAME COLUMN --
+    first_name VARCHAR(30) NOT NULL,
+    -- CREATE LAST_NAME COLUMN --
+    last_name VARCHAR(30) NOT NULL,
+    -- CREATE ROLE_ID COLUMN --
+    role_id INT NOT NULL,
+    -- CREATE MANAGER_ID COLUMN --
+    manager_id INT,
+     -- MAKES ID PRIMARY KEY --
+    PRIMARY KEY (id),
+    -- MAKES ROLE_ID FOREIGN KEY --
+    FOREIGN KEY (role_id) REFERENCES role(id),
+    -- MAKES MANAGER_ID FOREIGN KEY --
+    -- FIXME: may need to be role(id) --
+    FOREIGN KEY (manager_id) REFERENCES employee(id) 
+);
