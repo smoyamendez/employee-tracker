@@ -6,9 +6,9 @@ VALUES ("Management"), ("Sales"), ("Accounting"), ("Human Resources"), ("Recepti
 
 -- ROLE SEEDS --
 INSERT INTO role (title, salary, department_id)
-VALUES ('Regional Manager', 60000.00, 1), ('Assistant (to the) Regional Manager', 68000.00, 2) ('Salesperson', 65000.00, 3), 
-('Lead Accountant', 70000.00, 4), ('Accountant', 60000.00, 5),('Receptionist', 40000.00, 6), ('Quality Control', 45000.00, 7), 
-('Supplier Relations', 45000.00, 8), ('Human Resources', 65000.00, 9), ('Customer Relations Specialist', 42000.00, 10), ('Temp', 38000.00, 11);
+VALUES ('Regional Manager', 60000.00, 1), ('Assistant to the Regional Manager', 68000.00, 2), ('Salesperson', 65000.00, 2), 
+('Lead Accountant', 70000.00, 3), ('Accountant', 60000.00, 3),('Receptionist', 40000.00, 5), ('Quality Control', 45000.00, 6), 
+('Supplier Relations', 45000.00, 6), ('Human Resources', 65000.00, 4), ('Customer Relations Specialist', 42000.00, 6), ('Temp', 38000.00, 7);
 
 -- EMPLOYEE SEEDS --
 INSERT INTO employee (first_name, last_name, role_id, manager_id)

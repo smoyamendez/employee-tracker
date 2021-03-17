@@ -22,7 +22,7 @@ CREATE TABLE role (
      -- CREATE ID COLUMN --
     id INT NOT NULL AUTO_INCREMENT,
     -- CREATE TITLE COLUMN --
-    title VARCHAR(30) NOT NULL,
+    title VARCHAR(60) NOT NULL,
     -- CREATE SALARY COLUMN --
     salary DECIMAL (65,2) NOT NULL,
     -- CREATE DEPARTMENT ID --
@@ -30,6 +30,7 @@ CREATE TABLE role (
     -- MAKES ID PRIMARY KEY --
     PRIMARY KEY (id),
     -- MAKES DEPARTMENT_ID FOREIGN KEY --
+    CONSTRAINT fk_department
     FOREIGN KEY (department_id) REFERENCES department(id)
 );
 
@@ -50,6 +51,5 @@ CREATE TABLE employee (
     -- MAKES ROLE_ID FOREIGN KEY --
     FOREIGN KEY (role_id) REFERENCES role(id),
     -- MAKES MANAGER_ID FOREIGN KEY --
-    -- FIXME: may need to be role(id) --
     FOREIGN KEY (manager_id) REFERENCES employee(id) 
 );
