@@ -25,74 +25,146 @@ connection.connect((err) => {
 
 function startPrompt() {
     inquirer
-    .prompt([
-        {
-            type: "list",
-            message: "WHAT WOULD YOU LIKE TO DO?",
-            name: "start",
-            choices: [
-                "VIEW ALL EMPLOYEES",
-                "VIEW EMPLOYEES BY ROLE",
-                "VIEW EMPLOYEES BY DEPARTMENT",
-                "ADD EMPLOYEE",
-                "ADD ROLE",
-                "ADD DEPARTMENT",
-                "UPDATE EMPLOYEE ROLE",
-                "EXIT"
-            ]
-        }
-    ])
-    .then(function (res) {
-        switch (res.start) {
-            case "VIEW ALL EMPLOYEES":
-                viewEmpAll();
-                break;
-            case "VIEW EMPLOYEES BY ROLE":
-                viewEmpRole();
-                break;
-            case "VIEW EMPLOYEES BY DEPARTMENT":
-                viewEmpDept();
-                break;
-            case "ADD EMPLOYEE":
-                addEmp();
-                break;
-            case "ADD DEPARTMENT":
-                addDept();
-                break;
-            case "UPDATE EMPLOYEE ROLE":
-                updateEmpRole();
-                break;
-            case "EXIT":
-                exitPrompt();
-                break;
-        }
+        .prompt([
+            {
+                type: "list",
+                message: "WHAT WOULD YOU LIKE TO DO?",
+                name: "start",
+                choices: [
+                    "VIEW ALL EMPLOYEES",
+                    "VIEW EMPLOYEES BY ROLE",
+                    "VIEW EMPLOYEES BY DEPARTMENT",
+                    "ADD EMPLOYEE",
+                    "ADD ROLE",
+                    "ADD DEPARTMENT",
+                    "UPDATE EMPLOYEE ROLE",
+                    "EXIT"
+                ]
+            }
+        ])
+        .then(function (res) {
+            switch (res.start) {
+                case "VIEW ALL EMPLOYEES":
+                    viewEmpAll();
+                    break;
+                case "VIEW EMPLOYEES BY ROLE":
+                    viewEmpRole();
+                    break;
+                case "VIEW EMPLOYEES BY DEPARTMENT":
+                    viewEmpDept();
+                    break;
+                case "ADD EMPLOYEE":
+                    addEmp();
+                    break;
+                case "ADD ROLE":
+                    addRole();
+                    break;
+                case "ADD DEPARTMENT":
+                    addDept();
+                    break;
+                case "UPDATE EMPLOYEE ROLE":
+                    updateEmpRole();
+                    break;
+                case "EXIT":
+                    exitPrompt();
+                    break;
+            }
+        })
+}
+
+const viewEmpAll = () => {
+    // TODO: CONCAT MANAGER AT THE END OF IT
+    connection.query("SELECT * FROM employee", (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        startPrompt();
     })
 }
 
-function viewEmpAll() {
-    // CONCAT MANAGER AT THE END OF IT
-    connection.query("SELECT employee.first_name, employee.last_name, role.title, role.salary, department.name"), 
-    function (err, res) {
-        if (err) throw err
-        console.table(res)
+const viewEmpRole = () => {
+    connection.query("SELECT * FROM role", (err, res) => {
+        if (err) throw err;
+        console.table(res);
         startPrompt();
-    }
+    })
 }
-function viewEmpRole() {
+
+const viewEmpDept = () => {
+    connection.query("SELECT * FROM department", (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        startPrompt();
+    })
+}
+
+// for addEmp() role choices
+const roleChoices = () => {
+    connection.query("SELECT * FROM role", (err, res) => {
+        if (err) throw err;
+        res.map((role) => {
+            return {name: role.title, value: role.id}
+        });
+    })
+}
+
+// for addEmp() manager choices
+const managerChoices = () => {
+    const query = connection.query("SELECT * FROM employee", (err, res) => {
+        if (err) throw err;
+        res.map(({title}));
+    })
+    return query;
+}
+
+const addEmp = () => {
+    connection.query('SELECT * FROM employee', (err, res) => {
+        if (err) throw err;
+        inquirer
+            .prompt([
+                {
+                    type: 'input',
+                    name: 'first_name',
+                    message: 'WHAT IS EMPLOYEE\'S FIRST NAME?'
+                },
+                {
+                    type: 'input',
+                    name: 'last_name',
+                    message: 'WHAT IS EMPLOYEE\'S LAST NAME?'
+                },
+                {
+                    type: 'list',
+                    name: 'title',
+                    message: 'WHAT IS EMPLOYEE\'S ROLE?',
+                    choices: roleChoices()
+                },
+                {
+                    type: 'list',
+                    name: 'manager',
+                    message: 'WHO IS EMPLOYEE\'S MANAGER?',
+                    choices: managerChoices()
+                },
+            ])
+            // TAKE CHOICES FROM PROMPTS & INSERT INTO employee SET ? (fname,lname,managerid,roleid)
+            .then (function(choices) {
+                connection
+            })
+    })
+}
+
+
+
+function addRole() {
 
 }
-function viewEmpDept() {
 
-}
-function addEmp() {
-
-}
 function addDept() {
 
 }
+
 function updateEmpRole() {
 
 }
+
 function exitPrompt() {
     connection.end();
     process.exit();
