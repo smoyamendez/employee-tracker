@@ -11,38 +11,38 @@ VALUES ('Regional Manager', 60000.00, 1), ('Assistant to the Regional Manager', 
 ('Supplier Relations', 45000.00, 6), ('Human Resources', 65000.00, 4), ('Customer Relations Specialist', 42000.00, 6), ('Temp', 38000.00, 7);
 
 -- EMPLOYEE SEEDS --
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Michael", "Scott", 1;
+
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Michael", "Scott", 1, 1);
+VALUES ("Dwight", "Schrute", 2, 1);
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Dwight", "Schrute", 2);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Jim", "Halpert", 3, 1), ("Stanley", "Hudson", 3, 1), ("Phyllis", "Lapin", 3, 1);
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Jim", "Halpert", 3), ("Stanley", "Hudson", 3), ("Phyllis", "Lapin", 3);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Angela", "Martin", 4, 1), ("Oscar", "Gutierrez", 4, 1);
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Angela", "Martin", 4), ("Oscar", "Gutierrez", 4);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Kevin", "Malone", 5, 1);
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Kevin", "Malone", 5);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Pam", "Beasley", 6, 1), ("Erin", "Hannon", 6, 1);
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Pam", "Beasley", 6), ("Erin", "Hannon", 6);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Creed", "Bratton", 7, 1);
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Creed", "Bratton", 7);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Meredith", "Palmer", 8, 1);
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Meredith", "Palmer", 8);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Toby", "Flenderson", 9, 1);
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Toby", "Flenderson", 9);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Kelly", "Kapoor", 10, 1);
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Kelly", "Kapoor", 10);
-
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Ryan", "Howard", 11);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Ryan", "Howard", 11, 1);
 
 
 
