@@ -232,8 +232,8 @@ function updateEmpRole() {
               },
             ])
             .then(function (choices) {
-                console.log(choices)
-              connection.query("UPDATE employee SET role_id = ? WHERE id = ?", choices.id, choices.role_id, (err) => {
+                console.log(choices.id)
+                connection.query(`UPDATE employee SET role_id = ${choices.role_id} WHERE id = ${choices.id}`, (err) => {
                 if (err) return console.log(err);
                 console.log("Employee role updated");
                 startPrompt();
@@ -241,8 +241,4 @@ function updateEmpRole() {
             });
         });
       });
-}
-
-function exitPrompt() {
-  process.exit();
 }

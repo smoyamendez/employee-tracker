@@ -12,7 +12,7 @@ VALUES ('Regional Manager', 60000.00, 1), ('Assistant to the Regional Manager', 
 
 -- EMPLOYEE SEEDS --
 INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Michael", "Scott", 1;
+VALUES ("Michael", "Scott", 1);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("Dwight", "Schrute", 2, 1);
